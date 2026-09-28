@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>GURPS Realm Management — конспект для домашней игры</title>
+  <style>
+    body { font-family: Georgia, serif; line-height: 1.5; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    h1, h2, h3, h4 { font-family: Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95em; }
+    th, td { border: 1px solid #999; padding: 0.4rem 0.6rem; vertical-align: top; }
+    th { background: #eee; }
+    .note { background: #f7f7f7; border-left: 4px solid #666; padding: 0.7rem 1rem; margin: 1rem 0; }
+    .formula { background: #eef; padding: 0.5rem 0.8rem; border-radius: 4px; font-family: monospace; }
+    .page { border-top: 2px solid #333; margin-top: 2rem; padding-top: 1rem; }
+    .toc a { text-decoration: none; color: #036; }
+    .toc a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<h1>GURPS Realm Management — конспект для домашней игры</h1>
+
+<p class="note">
+Это <strong>подробный конспект</strong> книги, предназначенный для использования за игровым столом.
+Он передаёт игровые механики, таблицы и формулы, но не является дословным воспроизведением
+текста. Для полного контекста и примеров используйте саму книгу.
+</p>
+
+<div class="toc">
+<h2>Содержание</h2>
+<ol>
+  <li><a href="#ch1">Глава 1: Создание государства</a>
+    <ul>
+      <li><a href="#size">Размер государства</a></li>
+      <li><a href="#rp">Ресурсные очки (Resource Points)</a></li>
+      <li><a href="#tl">Технологический уровень (TL)</a></li>
+      <li><a href="#culture">Культурные и расовые черты</a></li>
+      <li><a href="#pop">Население и ёмкость</a></li>
+      <li><a href="#loyalty">Лояльность граждан</a></li>
+      <li><a href="#infra">Инфраструктура (IR)</a></li>
+      <li><a href="#power">Власть и привилегии (CR, ConR, OR)</a></li>
+      <li><a href="#gov">Типы правления</a></li>
+      <li><a href="#econ">Типы экономики</a></li>
+      <li><a href="#defense">Оборона и местность</a></li>
+      <li><a href="#edu">Образование (ER)</a></li>
+      <li><a href="#mgmt">Management Skill</a></li>
+      <li><a href="#habit">Обитаемость (Habitability)</a></li>
+      <li><a href="#rtm">Reaction-Time Modifier</a></li>
+      <li><a href="#enh">Улучшения и ограничения</a></li>
+      <li><a href="#final">Финализация: стоимость, доход, армия</a></li>
+    </ul>
+  </li>
+  <li><a href="#ch2">Глава 2: «Колесо» (The Wheel)</a>
+    <ul>
+      <li><a href="#turn">Структура хода</a></li>
+      <li><a href="#maneuvers">Манёвры</a></li>
+      <li><a href="#disruptions">Нарушения (Disruptions)</a></li>
+      <li><a href="#windfalls">Удачи (Windfalls)</a></li>
+      <li><a href="#expansion">Расширение и рост</a></li>
+      <li><a href="#revolution">Революция и распад</a></li>
+    </ul>
+  </li>
+  <li><a href="#quick">Быстрые таблицы и формулы</a></li>
+</ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- ГЛАВА 1 -->
+<!-- ============================================================ -->
+<div class="page">
+<h1 id="ch1">Глава 1: Создание государства</h1>
+
+<p>
+«Государство» (realm) — вся территория, которой правит человек или группа:
+от города-государства до империи. Создание включает выбор размера, ресурсов,
+характеристик, правления, экономики и модификаторов.
+</p>
+
+<h2 id="size">Размер государства (Realm Size Value)</h2>
+
+<p>Определяется по площади в квадратных милях. Таблица:</p>
+
+<table>
+  <tr><th>Типичная площадь</th><th>Класс Area Knowledge</th><th>Realm Size Value</th><th>Примеры</th></tr>
+  <tr><td>Все обитаемые системы галактики</td><td>Galaxy</td><td>+36</td><td>Млечный Путь</td></tr>
+  <tr><td>100 планет</td><td>Interplanetary State</td><td>+30</td><td>Объединённая Федерация Планет</td></tr>
+  <tr><td>50 млн кв. миль</td><td>Planet</td><td>+24</td><td>Земля (суша), Марс (+24), Луна (+22)</td></tr>
+  <tr><td>500 000 кв. миль</td><td>Large Nation</td><td>+18</td><td>Россия (+21), США (+21), Франция (+17)</td></tr>
+  <tr><td>5 000 кв. миль</td><td>Barony/County/Duchy/Small Nation</td><td>+12</td><td>Южная Корея (+15), Дания (+14), Люксембург (+10)</td></tr>
+  <tr><td>50 кв. миль</td><td>City-State/Micro-State/Tribal Land</td><td>+6</td><td>Гонконг (+9), Сингапур (+8), Лихтенштейн (+6)</td></tr>
+  <tr><td>0.5 кв. мили и меньше</td><td>Village and Surrounding Lands</td><td>0</td><td>Монако (+1), Ватикан (−1), феод рыцаря</td></tr>
+</table>
+
+<p>
+Верхний/нижний предел площади для класса — примерно ×10 или ÷10 от типичного.
+Исключения возможны (Россия — large nation, не planet).
+Для сложных государств (туннели, астероиды) используйте население и TL
+для определения эффективного Realm Size Value.
+</p>
+
+<h2 id="rp">Ресурсные очки (Resource Points, RP)</h2>
+
+<p>
+RP — это трудовые ресурсы, активы и «мощь» государства. Тратятся на манёвры.
+После траты исчезают; восполняются через манёвры (Gather/Extract, Marshal Manpower и т.д.).
+</p>
+
+<p>
+Покупаются при создании: каждое RP стоит <strong>0.5% базовой Realm Value</strong>
+(до модификаторов). ГМ решает, сколько RP доступно при старте.
+</p>
+
+<h3>Четыре типа RP</h3>
+<table>
+  <tr><th>Тип</th><th>Что представляет</th><th>Примеры</th></tr>
+  <tr><td><strong>Agriculture Points</strong></td><td>Излишки еды, медицины, топлива</td><td>Зерно, скот, лекарства</td></tr>
+  <tr><td><strong>Luxury/Precious Goods Points</strong></td><td>Готовые предметы роскоши</td><td>Шёлк, украшения, вино, пряности</td></tr>
+  <tr><td><strong>Natural Resources Points</strong></td><td>Сырьё</td><td>Лес, металлы, камень, жемчуг</td></tr>
+  <tr><td><strong>Workforce Points</strong></td><td>Избыточная рабочая сила</td><td>Рабочие, ремесленники, солдаты</td></tr>
+</table>
+
+<p>
+Значение может быть положительным (излишек), нулевым (баланс) или отрицательным (дефицит).
+Отрицательное значение опасно: каждый ход бросок Management Skill
+с −1 за каждые 2 пункта дефицита (округление вверх). Провал — потеря RP;
+критический провал — дополнительная потеря; критический успех — восстановление RP.
+</p>
+
+<h3>Опционально: разделение Agriculture Points</h3>
+<p>Animal Husbandry Points (животноводство) и Farming Points (растениеводство).</p>
+
+<h3>Опционально: разделение Workforce Points</h3>
+<p>Mental (умственный труд) и Physical (физический труд).</p>
+
+<h3>Экзотические ресурсы и рабочая сила</h3>
+<p>
+Зомби, роботы, ИИ и т.п. могут давать большие Workforce Points (Physical)
+или отдельное значение «Exotic Workforce Points». Экзотические ресурсы
+(мана, порталы, психокристаллы) могут быть Luxury/Precious Goods Points
+или отдельным значением.
+</p>
+
+<h2 id="tl">Технологический уровень (TL)</h2>
+
+<p>
+Стартовый TL = базовый TL кампании. Понижение — через ограничение.
+Повышение сверх TL кампании — только с разрешения ГМ.
+Для повышения в игре используйте манёвр Improve.
+</p>
+
+<h2 id="culture">Культурные и расовые черты</h2>
+
+<h3>Культурные черты (Cultural Traits)</h3>
+<p>
+Общие преимущества, недостатки, навыки или мета-черты жителей.
+Положительные увеличивают Realm Value, отрицательные — уменьшают.
+Отсутствие «универсальной» черты может дать Social Stigma
+(Ignorant, Excommunicated или Disowned).
+</p>
+
+<h3>Расовые черты жителей (Realm Inhabitant Racial Traits)</h3>
+<p>
+Стоимость расового шаблона: каждые полные ±5 пунктов меняют Realm Value на ±1%.
+Нет верхнего предела; нижний предел — −80%.
+Для нескольких рас — средневзвешенное по доле населения, округление вверх.
+</p>
+
+<h2 id="pop">Население и ёмкость (Carrying Capacity)</h2>
+
+<p>
+Carrying Capacity — среднее число людей на кв. милю, которое государство
+может прокормить. Зависит от TL:
+</p>
+
+<table>
+  <tr><th>TL</th><th>Макс. плотность (чел./кв. миля)</th><th>TL</th><th>Макс. плотность</th></tr>
+  <tr><td>0</td><td>12*</td><td>7</td><td>200</td></tr>
+  <tr><td>1</td><td>20</td><td>8</td><td>280</td></tr>
+  <tr><td>2</td><td>28</td><td>9</td><td>400</td></tr>
+  <tr><td>3</td><td>40</td><td>10</td><td>600</td></tr>
+  <tr><td>4</td><td>60</td><td>11</td><td>800</td></tr>
+  <tr><td>5</td><td>80</td><td>12</td><td>1 200</td></tr>
+  <tr><td>6</td><td>120</td><td></td><td></td></tr>
+</table>
+
+<p>* Для охотников-собирателей делите на 10.</p>
+
+<p>
+Максимальное население = плотность × площадь. Фактическое население —
+любое до этого предела (выбирает игрок/ГМ).
+</p>
+
+<h2 id="loyalty">Лояльность граждан (Citizen Loyalty)</h2>
+
+<p>Отношение жителей к правительству. Использует шкалу реакции:</p>
+
+<table>
+  <tr><th>Уровень</th><th>Число</th><th>Модификатор Will</th><th>Примеры</th></tr>
+  <tr><td>Disastrous</td><td>0 и менее</td><td>−7</td><td>Рим в кризис III века; Франция в революцию</td></tr>
+  <tr><td>Very Bad</td><td>1–3</td><td>−5</td><td>Завоёванные народы; Россия в WWI</td></tr>
+  <tr><td>Bad</td><td>4–6</td><td>−3</td><td>ГДР перед крахом; Англия при Карле I</td></tr>
+  <tr><td>Poor</td><td>7–9</td><td>−1</td><td>СССР в поздние годы</td></tr>
+  <tr><td>Neutral</td><td>10–12</td><td>0</td><td>Канада; США; Франция сегодня</td></tr>
+  <tr><td>Good</td><td>13–15</td><td>+1</td><td>Филиппины XX века; Германия в WWI</td></tr>
+  <tr><td>Very Good</td><td>16–18</td><td>+3</td><td>Австралия XX века; Израиль ~1950</td></tr>
+  <tr><td>Excellent</td><td>19+</td><td>+5</td><td>Утопия Томаса Мора; идеальное государство Платона</td></tr>
+</table>
+
+<p>
+Модификатор Will = значение из таблицы + половина Control Rating (округление вниз).
+Для чёрного рынка и коррупции вычитайте половину модификатора (округление вверх).
+Старт — Neutral. Выше/ниже — улучшение/ограничение.
+</p>
+
+<h2 id="infra">Инфраструктура (Infrastructure Rating, IR)</h2>
+
+<table>
+  <tr><th>IR</th><th>Название</th><th>Модификатор</th><th>Описание</th></tr>
+  <tr><td>0</td><td>None</td><td>—</td><td>Нет инфраструктуры; пешие тропы; колодцы</td></tr>
+  <tr><td>1</td><td>Very Loose</td><td>−3</td><td>Старая/разрушенная или новая без upkeep; устаревшая связь</td></tr>
+  <tr><td>2</td><td>Loose</td><td>−1</td><td>Отстаёт на 1 TL; дороги есть, но дальние поездки дороги</td></tr>
+  <tr><td>3</td><td>Average</td><td>0</td><td>Современная для TL кампании; общественный транспорт</td></tr>
+  <tr><td>4</td><td>Advanced</td><td>+1</td><td>Передовая; 1–2 примера «cutting edge» технологий</td></tr>
+  <tr><td>5</td><td>Very Advanced</td><td>+2</td><td>«Bleeding edge»; бесплатный транспорт и связь для всех</td></tr>
+  <tr><td>6</td><td>Futuristic</td><td>+3+</td><td>На TL выше кампании; мгновенная связь, телепортация и т.п.</td></tr>
+</table>
+
+<p>Старт — IR3. Выше/ниже — улучшение/ограничение.</p>
+
+<h2 id="power">Власть и привилегии: CR, ConR, OR</h2>
+
+<h3>Control Rating (CR)</h3>
+<p>См. B506. Старт — 2 или 3. CR ≥ 3 + TL/2 требует магии/супернауки.</p>
+
+<h3>Conformity Rating (ConR)</h3>
+<table>
+  <tr><th>ConR</th><th>Название</th><th>Эффект</th><th>Примеры</th></tr>
+  <tr><td>0</td><td>No Conformity</td><td>−1 к реакции на чужих, −3 к конфликтующим группам; CR −1</td><td>Апартеид; недавно завоёванные</td></tr>
+  <tr><td>1</td><td>Some Conformity</td><td>−2 к конфликтующим группам (~25%)</td><td>Ранние латиноамериканские республики</td></tr>
+  <tr><td>2</td><td>Mild Conformity</td><td>−1 к 25% или −3 к 5% населения</td><td>Китай XX века; СССР</td></tr>
+  <tr><td>3</td><td>Moderate Conformity</td><td>+2 к реакции граждан за границей</td><td>США; Британская империя</td></tr>
+  <tr><td>4</td><td>Abundant Conformity</td><td>+2 между гражданами; CR +1 вне норм</td><td>Федерация Star Trek; Северная Корея</td></tr>
+  <tr><td>5</td><td>Near Total Conformity</td><td>Social Stigma −2 для инакомыслящих; +2 к пропаганде; CR +2</td><td>Сёгунат Токугава; нацистская Германия</td></tr>
+  <tr><td>6</td><td>Total Conformity</td><td>Пропаганда автоуспешна; CR 6 для граждан</td><td>Коллективный разум; Смурфы</td></tr>
+</table>
+
+<p>Старт — 2 или 3. Выше/ниже — улучшение/ограничение.</p>
+
+<h3>Openness Rating (OR)</h3>
+<table>
+  <tr><th>OR</th><th>Название</th><th>Модификатор реакции</th><th>Примеры</th></tr>
+  <tr><td>0</td><td>Xenophobic</td><td>−4</td><td>Япония XVI века; Северный Сентинел</td></tr>
+  <tr><td>1</td><td>Very Insular</td><td>−2</td><td>Албания при Ходже; Северная Корея</td></tr>
+  <tr><td>2</td><td>Moderately Insular</td><td>−1</td><td>Императорский Китай; ГДР</td></tr>
+  <tr><td>3</td><td>Neutral</td><td>0</td><td>Византия в упадке; Сингапур; викторианская Британия</td></tr>
+  <tr><td>4</td><td>Mildly Open</td><td>+1</td><td>ЕС 1990-х</td></tr>
+  <tr><td>5</td><td>Moderately Open</td><td>+2</td><td>Аргентина XIX века</td></tr>
+  <tr><td>6</td><td>Extremely Open</td><td>+4</td><td>Анархия</td></tr>
+</table>
+
+<p>Старт — 2–4. Выше/ниже — ограничение (для OR).</p>
+
+<h2 id="gov">Типы правления</h2>
+
+<table>
+  <tr><th>Тип</th><th>CR</th><th>ConR</th><th>OR</th><th>Плюсы</th><th>Минусы</th></tr>
+  <tr><td><strong>Anarchy</strong></td><td>0–1</td><td>4–6</td><td>0–6</td><td>—</td><td>—</td></tr>
+  <tr><td><strong>Aristocracy</strong></td><td>4–6</td><td>0–3</td><td>0–4</td><td>−1 к RTM</td><td>Corrupt 1</td></tr>
+  <tr><td><strong>Athenian Democracy</strong></td><td>2–4</td><td>3–5</td><td>1–3</td><td>+2 к трудовым манёврам</td><td>+1 к RTM</td></tr>
+  <tr><td><strong>Autocracy/Dictatorship</strong></td><td>5–6</td><td>4–6</td><td>0–6</td><td>Management Skill +1 бесплатно</td><td>−10 очков недостатка (эксцентричность лидера)</td></tr>
+  <tr><td><strong>Bureaucracy</strong></td><td>4–6</td><td>4–6</td><td>1–6</td><td>−1 Workforce Point на Allocate Resources</td><td>+1 к RTM</td></tr>
+  <tr><td><strong>Caste</strong></td><td>3–6</td><td>3–6</td><td>0–3</td><td>−1 Workforce Point на все задачи</td><td>Нужен успех 2+ при найме Workforce Points</td></tr>
+  <tr><td><strong>Clan/Tribal</strong></td><td>3–4</td><td>4–6</td><td>0–3</td><td>−1 к RTM</td><td>OR −1 (минимум 0)</td></tr>
+  <tr><td><strong>Colonialism</strong></td><td>4–6</td><td>0–4</td><td>0–6</td><td>+2 к Gather/Extract</td><td>IR −1 (минимум 0)</td></tr>
+  <tr><td><strong>Corporate State</strong></td><td>3–6</td><td>3–6</td><td>3–6</td><td>Management Skill +2 бесплатно</td><td>Social Resonance −1; Corrupt 1</td></tr>
+  <tr><td><strong>Cybercracy</strong></td><td>5–6</td><td>1–3</td><td>0–6</td><td>−10% времени на все задачи</td><td>Взлом/сбой: +10% времени или −2 к броскам</td></tr>
+  <tr><td><strong>Feudal</strong></td><td>5–6</td><td>1–4</td><td>3–5</td><td>+5% к Military Resources</td><td>6 и менее: −30% MR из-за междоусобиц</td></tr>
+  <tr><td><strong>Kritarchy</strong></td><td>1–6</td><td>1–3</td><td>0–3</td><td>Citizen Loyalty +1 шаг для коррупции; +1 к реакции</td><td>Management Skill −1 (макс. 16)</td></tr>
+  <tr><td><strong>Meritocracy</strong></td><td>4–6</td><td>2–6</td><td>2–6</td><td>+2 к броскам Workforce Points</td><td>−2 к проверкам на восстание</td></tr>
+  <tr><td><strong>Military Government</strong></td><td>4–6</td><td>3–6</td><td>0–6</td><td>Раз в 12 ходов +1 к MBF</td><td>Каждые 1d ходов Revenue → 0</td></tr>
+  <tr><td><strong>Oligarchy</strong></td><td>3–6</td><td>0–4</td><td>0–4</td><td>+2 к проверкам против революции</td><td>Corrupt 1</td></tr>
+  <tr><td><strong>Plutocracy</strong></td><td>3–6</td><td>1–3</td><td>3–5</td><td>+2 к Trade и Negotiate</td><td>+20% потерь Luxury/Revenue</td></tr>
+  <tr><td><strong>Representative Democracy</strong></td><td>2–4</td><td>2–5</td><td>2–5</td><td>+2 к проверкам против революции</td><td>Другие +2 к пропаганде против вас</td></tr>
+  <tr><td><strong>Technocracy</strong></td><td>3–6</td><td>4–6</td><td>3–5</td><td>+1 к стартовому IR</td><td>Revenue −10%</td></tr>
+  <tr><td><strong>Theocracy</strong></td><td>3–6</td><td>4–6</td><td>0–6</td><td>Marshal Manpower: любой RP → Workforce Point раз в ход</td><td>−2 к проверкам против революции</td></tr>
+</table>
+
+<p>
+Можно комбинировать типы (merged/variant). Для полностью новых типов
+используйте улучшение «Unusual Government» (цена как Unusual Background,
+но в процентах).
+</p>
+
+<h2 id="econ">Типы экономики</h2>
+
+<table>
+  <tr><th>Тип</th><th>Плюсы</th><th>Минусы</th></tr>
+  <tr><td><strong>Capitalism</strong></td><td>Успех 3+ при Revenue: +20%; Improve TL/IR/ER: −5%</td><td>Каждые 2d ходов бросок Management Skill; критический провал — −1d×10% RP</td></tr>
+  <tr><td><strong>Communism</strong></td><td>При получении Workforce Point: бросок 3d, на 5+ConR или менее +1</td><td>Corrupt 1</td></tr>
+  <tr><td><strong>Mercantilism</strong></td><td>Покупка RP на 10% дешевле</td><td>Продажа RP: −3d%</td></tr>
+  <tr><td><strong>Post-Scarcity/Utopian</strong></td><td>+1 к базовому Status; Citizen Loyalty +1 шаг</td><td>При Workforce Point: бросок 3d, на 4+ConR+ или выше — потеря</td></tr>
+  <tr><td><strong>Socialism</strong></td><td>Citizen Loyalty +2 шага</td><td>+1 Workforce Point к стоимости манёвров; +1 RP/Revenue к нарушениям</td></tr>
+  <tr><td><strong>Traditional</strong></td><td>+1d Workforce Points; Management Skill против экологических нарушений</td><td>50% Revenue → Luxury/Precious Goods Points</td></tr>
+</table>
+
+<p>
+Смешанные экономики: сложите плюсы и минусы. Модификаторы: Criminal, Palatial,
+Participatory, Slave, Subsistence, Unsustainable.
+</p>
+
+<h2 id="defense">Оборона и местность (Defense Bonus, Terrain)</h2>
+
+<p>
+Обычная местность — бесплатно. Defensible Terrain (улучшение) даёт +1 DB
+за уровень; Indefensible Terrain (ограничение) даёт −1 DB за уровень.
+</p>
+
+<h2 id="edu">Образование (Education Rating, ER)</h2>
+
+<table>
+  <tr><th>ER</th><th>Название</th><th>Модификатор</th><th>Описание</th></tr>
+  <tr><td>0</td><td>No Education</td><td>−4</td><td>Неграмотные; знания передаются устно</td></tr>
+  <tr><td>1</td><td>Rare Education</td><td>−3</td><td>~90% неграмотных; обучение через apprenticeship</td></tr>
+  <tr><td>2</td><td>Infrequent Education</td><td>−2</td><td>~90% неграмотных; высшее образование для богатых</td></tr>
+  <tr><td>3</td><td>Uncommon Education</td><td>−1</td><td>~50% грамотных; высшее — малый процент</td></tr>
+  <tr><td>4</td><td>Common Education</td><td>0</td><td>&lt;10% неграмотных</td></tr>
+  <tr><td>5</td><td>Near-Universal</td><td>+1</td><td>&lt;5% неграмотных; высшее доступно</td></tr>
+  <tr><td>6</td><td>Universal</td><td>+2</td><td>&lt;1% неграмотных; высшее бесплатно</td></tr>
+</table>
+
+<p>
+Стартовый ER = половина TL (округление вверх). Выше/ниже — улучшение/ограничение.
+Модификатор ER применяется к Management Skill для научных/технических задач
+и с обратным знаком — к пропаганде против вас.
+</p>
+
+<h2 id="mgmt">Management Skill</h2>
+
+<p>Старт — 12. Каждые ±1 к уровню = ±5% к Realm Value.</p>
+
+<p>Опциональные модификаторы:</p>
+<table>
+  <tr><th>Модификатор</th><th>Эффект</th><th>Цена</th></tr>
+  <tr><td>Completely Reliable</td><td>Переброс провала дважды за ход, лучший результат; −1d−1 к RTM</td><td>+50%</td></tr>
+  <tr><td>Usually Reliable</td><td>Переброс критических провалов или провалов на 10+; −2d к RTM</td><td>+25%</td></tr>
+  <tr><td>Unreliable</td><td>+1d−2 к RTM (мин. +1); +50% времени или −2 к броскам</td><td>−25%</td></tr>
+  <tr><td>Very Unreliable</td><td>Провал на 5+ = критический; +1d−2 к RTM; ×2 времени или −4</td><td>−50%</td></tr>
+  <tr><td>Facile</td><td>Множественные манёвры: −3 вместо −6; 1 Workforce Point вместо 2</td><td>+15%</td></tr>
+  <tr><td>Very Facile</td><td>Как Facile + 1 дополнительный манёвр без штрафа; можно брать уровнями</td><td>+30%/уровень</td></tr>
+</table>
+
+<h2 id="habit">Обитаемость (Habitability)</h2>
+
+<table>
+  <tr><th>Уровень</th><th>Число</th><th>Модификатор</th><th>Примеры</th></tr>
+  <tr><td>Disastrous</td><td>0</td><td>−3 или хуже</td><td>Арктика; маргинальные станции</td></tr>
+  <tr><td>Very Bad</td><td>1–3</td><td>−2</td><td>Сибирь</td></tr>
+  <tr><td>Bad</td><td>4–6</td><td>−1</td><td>Тибет</td></tr>
+  <tr><td>Poor</td><td>7–9</td><td>−1 (на выбор ГМ)</td><td>Северная Швеция</td></tr>
+  <tr><td>Neutral</td><td>10–12</td><td>0</td><td>Большая часть Европы</td></tr>
+  <tr><td>Good</td><td>13–15</td><td>+1</td><td>Плодородные долины Нила, Инда</td></tr>
+  <tr><td>Very Good</td><td>16–18</td><td>+2</td><td>Идеальный терраформированный мир</td></tr>
+  <tr><td>Excellent</td><td>19</td><td>+3</td><td>Библейский Эдем</td></tr>
+</table>
+
+<p>
+Модификатор влияет на Animal Handling (Livestock), Farming, Fishing,
+Gardening, Survival, Tracking (охота) и HT против климата.
+Старт — Neutral. Выше/ниже — улучшение/ограничение.
+</p>
+
+<h2 id="rtm">Reaction-Time Modifier (RTM)</h2>
+
+<p>Показатель скорости реакции. Ниже — лучше.</p>
+
+<table>
+  <tr><th>Признак</th><th>Модификатор</th></tr>
+  <tr><td>TL0–4</td><td>+2</td></tr>
+  <tr><td>TL5–6</td><td>+1</td></tr>
+  <tr><td>TL7–8</td><td>0</td></tr>
+  <tr><td>TL9–10</td><td>−1</td></tr>
+  <tr><td>TL11+</td><td>−2</td></tr>
+  <tr><td>Management Skill 9 или менее</td><td>+3</td></tr>
+  <tr><td>Management Skill 10–11</td><td>+2</td></tr>
+  <tr><td>Management Skill 12–14</td><td>+1</td></tr>
+  <tr><td>Management Skill 15–17</td><td>0</td></tr>
+  <tr><td>Management Skill 18–20</td><td>−1</td></tr>
+  <tr><td>Management Skill 21+</td><td>−2</td></tr>
+  <tr><td>Сложность (половина максимального Status, округление вниз)</td><td>+(Status/2)</td></tr>
+</table>
+
+<p>Reflexive/Inactive Realm: ±1 к RTM за уровень (макс. 4).</p>
+
+<h2 id="enh">Улучшения и ограничения</h2>
+
+<h3>Улучшения (Realm Enhancements)</h3>
+<table>
+  <tr><th>Название</th><th>Цена</th><th>Эффект</th></tr>
+  <tr><td>Able Populace</td><td>+25% или +50%</td><td>+1 Workforce Point при получении; −1 потерю при потере (ур. 2)</td></tr>
+  <tr><td>Admired</td><td>+5%/уровень</td><td>Положительное Social Resonance</td></tr>
+  <tr><td>Advanced Infrastructure</td><td>+25%/уровень</td><td>IR выше 3</td></tr>
+  <tr><td>Appearance</td><td>варьируется</td><td>±1% за пункт стоимости</td></tr>
+  <tr><td>Clear Routes</td><td>+10%/уровень</td><td>Trade: Workforce Points вместо других RP</td></tr>
+  <tr><td>Conventional Populace</td><td>+2%/уровень</td><td>ConR выше 3</td></tr>
+  <tr><td>Defensible Terrain</td><td>+10% за +1 DB</td><td>+1 DB за уровень (макс. +4)</td></tr>
+  <tr><td>Educated Populace</td><td>+10%/уровень</td><td>ER выше базового</td></tr>
+  <tr><td>Famous for (Archetype)</td><td>варьируется</td><td>Как Reputation, но для государства</td></tr>
+  <tr><td>Fertile Territory</td><td>+15%/уровень</td><td>+1 Agriculture Point за 3 очка успеха Gather/Extract</td></tr>
+  <tr><td>Habitable Land</td><td>+10%/шаг</td><td>Habitability выше Neutral</td></tr>
+  <tr><td>Heavy Taxation</td><td>+5%/уровень</td><td>CR +1 для налогов; +Revenue</td></tr>
+  <tr><td>High TL</td><td>+25%/уровень</td><td>TL выше кампании</td></tr>
+  <tr><td>Higher Carrying Capacity</td><td>+5%</td><td>TL +1 для Carrying Capacity</td></tr>
+  <tr><td>Higher Quality of Life</td><td>+25%/уровень</td><td>+1 к минимальному Status</td></tr>
+  <tr><td>Ideal Climate</td><td>+10% или +50%</td><td>Игнор погодных нарушений раз в 4 хода или всегда</td></tr>
+  <tr><td>Independent Revenue Stream</td><td>+1%/уровень</td><td>+1% Revenue за уровень</td></tr>
+  <tr><td>Loyal Citizenry</td><td>+15%/шаг</td><td>Citizen Loyalty выше Neutral</td></tr>
+  <tr><td>Maneuver Mastery</td><td>+20%/манёвр</td><td>Игнор штрафа за 2+ манёвра для выбранного</td></tr>
+  <tr><td>Quick Deployment</td><td>+20%/уровень</td><td>−1 неделя к Marshal Manpower (макс. 4)</td></tr>
+  <tr><td>Reduced Consumption</td><td>+25%/уровень</td><td>−1 Agriculture/Natural Resources при голоде</td></tr>
+  <tr><td>Reflexive Realm</td><td>+5%/уровень</td><td>−1 к RTM за уровень</td></tr>
+  <tr><td>Renewing Resource</td><td>+10% за +1</td><td>+1 к Gather/Extract/Manufacture/Marshal; +1 сбор за ход</td></tr>
+  <tr><td>Reserve (Type)</td><td>+10%/уровень</td><td>Раз в 3d ходов +1 RP выбранного типа за уровень</td></tr>
+  <tr><td>Secure Society</td><td>+10%/уровень</td><td>CR +1 за уровень</td></tr>
+  <tr><td>Unique Resource</td><td>+100%</td><td>Уникальный ресурс; торговля минимум 2:1</td></tr>
+</table>
+
+<h3>Ограничения (Realm Limitations)</h3>
+<table>
+  <tr><th>Название</th><th>Цена</th><th>Эффект</th></tr>
+  <tr><td>Broad-Minded Populace</td><td>−2% или −5%</td><td>OR5/OR6: штрафы к враждебным действиям</td></tr>
+  <tr><td>Chauvinistic Populace</td><td>−2% или −5%</td><td>OR0/OR1: штрафы к помощи другим</td></tr>
+  <tr><td>Corrupt</td><td>−10%/уровень</td><td>−1 к Windfalls за уровень; потеря RP/Revenue</td></tr>
+  <tr><td>Hard-Power Oriented</td><td>−5%</td><td>−2 без военного решения</td></tr>
+  <tr><td>Hostile Climate</td><td>−5% или −25%</td><td>Погодные нарушения раз в 4 хода или каждый ход</td></tr>
+  <tr><td>In Debt</td><td>−1%/уровень</td><td>−5% Starting Revenue за уровень; −1% Revenue за уровень</td></tr>
+  <tr><td>Indefensible Terrain</td><td>−5% за −1 DB</td><td>−1 DB за уровень</td></tr>
+  <tr><td>Inefficient</td><td>−15%/уровень</td><td>Как Corrupt, но никто не выигрывает; Citizen Loyalty падает</td></tr>
+  <tr><td>Infertile Territory</td><td>−20%/уровень</td><td>Нужен успех 2+ за уровень для Gather/Extract</td></tr>
+  <tr><td>Light Taxation</td><td>−5%/уровень</td><td>CR −1 для налогов; −Revenue</td></tr>
+  <tr><td>Loose Society</td><td>−15%/уровень</td><td>CR −1 за уровень; риск революции</td></tr>
+  <tr><td>Mothballed Military</td><td>−2%/уровень</td><td>−5% Military Resources за уровень</td></tr>
+  <tr><td>Scarce Resource</td><td>−25%/тип</td><td>−5 к Gather/Extract; нельзя несколько манёвров</td></tr>
+  <tr><td>Soft-Power Oriented</td><td>−10%</td><td>−2 без дипломатии</td></tr>
+  <tr><td>Superstitious Populace</td><td>−5%</td><td>−3 к Citizen Loyalty при нарушениях</td></tr>
+  <tr><td>Unrecognized</td><td>−5% или −10%</td><td>−4 к Diplomacy; нет Diplomatic Immunity</td></tr>
+</table>
+
+<h2 id="final">Финализация: стоимость, доход, армия</h2>
+
+<h3>Realm Value</h3>
+<div class="formula">
+Базовая стоимость = (месячная зарплата среднего гражданина) × Население × 0.6
+</div>
+<p>
+Затем примените сумму процентов от культурных черт, расовых черт,
+Management Skill, улучшений и ограничений. Минимум — 20% базовой стоимости.
+</p>
+<p>
+Добавьте стоимость стартовых Resource Points (0.5% базовой за каждый)
+и стоимость военных элементов.
+</p>
+
+<h3>Military Resources (MR)</h3>
+<div class="formula">
+MR = (месячная зарплата) × Население × MBF
+</div>
+<table>
+  <tr><th>CR</th><th>MBF</th><th>CR</th><th>MBF</th></tr>
+  <tr><td>0</td><td>—</td><td>4</td><td>5%</td></tr>
+  <tr><td>1</td><td>0.5%</td><td>5</td><td>10%</td></tr>
+  <tr><td>2</td><td>1%</td><td>6</td><td>20%</td></tr>
+  <tr><td>3</td><td>2%</td><td>6 (война)</td><td>50%</td></tr>
+</table>
+
+<h3>Revenue</h3>
+<div class="formula">
+Revenue = (месячная зарплата) × Население × RF × 0.6
+</div>
+<table>
+  <tr><th>CR</th><th>RF</th><th>CR</th><th>RF</th></tr>
+  <tr><td>0</td><td>0.5% (опц.)</td><td>4</td><td>20%</td></tr>
+  <tr><td>1</td><td>2%</td><td>5</td><td>30%</td></tr>
+  <tr><td>2</td><td>5%</td><td>6</td><td>50%</td></tr>
+  <tr><td>3</td><td>10%</td><td></td><td></td></tr>
+</table>
+<p>
+Можно временно поднять RF до 5× нормального, но каждое повышение даёт
+кумулятивный −2 к Finance и Administration.
+</p>
+
+<h3>Starting Revenue</h3>
+<p>1% от Realm Value. Может быть меньше при долгах.</p>
+
+<h3>Status и Wealth</h3>
+<p>
+TL0–4: типичный Status −1 (сельские) или 0 (городские).
+TL5+: Status 0. Максимум зависит от правления.
+Диапазон Wealth — по таблице B517.
+</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- ГЛАВА 2 -->
+<!-- ============================================================ -->
+<div class="page">
+<h1 id="ch2">Глава 2: «Колесо» (The Wheel)</h1>
+
+<h2 id="turn">Структура хода</h2>
+<ol>
+  <li>ГМ бросает на нарушения (3d6: 16+ = disruption) и удачи (3d6: 5− = windfall).</li>
+  <li>Все государства выбирают манёвр и тайно распределяют RP.</li>
+  <li>Манёвры разрешаются в порядке от высшего RTM к низшему.</li>
+  <li>Более быстрые могут реагировать на более медленных.</li>
+  <li>Результаты применяются одновременно.</li>
+</ol>
+
+<h2 id="maneuvers">Манёвры</h2>
+
+<h3>Allocate Resources</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point (или 0 как подготовка).<br>
+<strong>Броски:</strong> Administration, Management Skill или подходящий навык.<br>
+<strong>Эффект:</strong> Общее управление, борьба с эпидемиями. Как подготовка —
+снижает стоимость следующего Marshal Manpower или Plan на 1 RP за использование (макс. 3).</p>
+
+<h3>Bluff</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Fast-Talk, Management Skill, Propaganda, Psychology (Applied). Всегда −4.<br>
+<strong>Эффект:</strong> Обман, пропаганда. Успех = успешный Negotiate или Threaten.
+Против своего народа: +1 ConR на 3 месяца (провал −1, крит. провал −2).</p>
+
+<h3>Demolish</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point + деньги (1/5 изменения Realm Value).<br>
+<strong>Броски:</strong> нет.<br>
+<strong>Эффект:</strong> Убрать улучшение или добавить ограничение.</p>
+
+<h3>Do Nothing</h3>
+<p><strong>Стоимость:</strong> нет. <strong>Броски:</strong> нет.<br>
+<strong>Эффект:</strong> Бездействие. ГМ может использовать при нерешительности игроков.</p>
+
+<h3>Gather/Extract</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Administration, Management Skill или подходящий навык.<br>
+<strong>Эффект:</strong> Добыть RP (кроме Workforce). Успех: RP = 1/2 margin of success (мин. Management Skill/4).
+Несколько типов: −2 за каждый дополнительный. Крит. успех: +1d RP. Крит. провал: −1 RP.</p>
+
+<h3>Improve</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point + деньги (разница в Realm Value).<br>
+<strong>Броски:</strong> Engineer (подходящий) или Management Skill.<br>
+<strong>Эффект:</strong> Приобрести улучшение или снять ограничение.
+Провал: −50% денег; крит. провал: −100%; крит. успех: двойной эффект бесплатно.</p>
+
+<h3>Manufacture</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> crafting/Engineer или Management Skill.<br>
+<strong>Эффект:</strong> Natural Resources → 1.5× Luxury/Precious Goods (округление вверх).
+При разнице TL — × отношение starting wealth.</p>
+
+<h3>Marshal Manpower</h3>
+<p><strong>Стоимость:</strong> возможны Military Resources или Luxury/Precious Goods Points.<br>
+<strong>Броски:</strong> Administration, Leadership, Management Skill, Propaganda.<br>
+<strong>Эффект:</strong> Сбор войск, наём рабочих, создание поселений.
+Войска: успех = переместить/поднять элементы на сумму MR.
+Рабочие: успех = Workforce Points = 2/3 margin of success (мин. 1).</p>
+
+<h3>Negotiate</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Diplomacy или Management Skill.<br>
+<strong>Эффект:</strong> Quick Contest против ConR + Citizen Loyalty цели.
+Результат — по таблице (см. ниже).</p>
+
+<table>
+  <tr><th>Margin</th><th>Реакция</th><th>Эффект на своих</th></tr>
+  <tr><td>Victory by 8+</td><td>Excellent</td><td>Loyalty +3 на 3 хода, затем +1</td></tr>
+  <tr><td>Victory by 5–7</td><td>Very Good</td><td>Loyalty +2 на 3 хода, затем +1</td></tr>
+  <tr><td>Victory by 1–4</td><td>Good</td><td>Loyalty +1 (не кумулятивно)</td></tr>
+  <tr><td>Tie</td><td>Neutral</td><td>Без изменений</td></tr>
+  <tr><td>Loss by 1–2</td><td>Poor</td><td>Loyalty −1</td></tr>
+  <tr><td>Loss by 3–4</td><td>Bad</td><td>Loyalty −2 на ход, затем −1</td></tr>
+  <tr><td>Loss by 5–7</td><td>Very Bad</td><td>Loyalty −3 на ход, затем −1</td></tr>
+  <tr><td>Loss by 8+</td><td>Disastrous</td><td>Восстание!</td></tr>
+</table>
+
+<h3>Plan</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Administration, Intelligence Analysis, Management Skill, Strategy, Tactics.<br>
+<strong>Эффект:</strong> +2 к одному манёвру против конкретного государства/цели.
+Повторные Plan: +1 каждый, максимум +6 после 5 ходов.</p>
+
+<h3>Reconnoiter</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Intelligence Analysis, Management Skill, Strategy, Tactics.<br>
+<strong>Эффект:</strong> −1 Workforce Point к следующему манёвру за каждые 4 очка успеха (мин. 1).
+Разведка перед боем: успех = базовая информация; крит. успех = точные числа.
+Провал: реакция цели −1 шаг. Крит. провал: разведчики захвачены.</p>
+
+<h3>Sabotage</h3>
+<p><strong>Стоимость:</strong> 2 Workforce Points.<br>
+<strong>Броски:</strong> Administration, Management Skill или подходящий навык.<br>
+<strong>Эффект:</strong> Quick Contest. Победа: −1 к след. манёвру цели за 2 очка победы
+ИЛИ −1 RP за 5 очков (или 1 случайный RP за 3 очка). Провал: реакция −1 шаг за 2 очка.</p>
+
+<h3>Threaten</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Intimidation или Management Skill.<br>
+<strong>Эффект:</strong> Quick Contest против (12 + Citizen Loyalty mod).
+Победа: цель берёт Do Nothing или Wait. Крит. успех: цель «ошеломлена» на 1d ходов.
+Любая победа: реакция −1 шаг. Провал: переброс реакции; крит. провал: вы берёте Do Nothing/Wait.</p>
+
+<h3>Trade</h3>
+<p><strong>Стоимость:</strong> 1 Workforce Point.<br>
+<strong>Броски:</strong> Administration, Economics, Finance, Management Skill, Market Analysis, Merchant.
+ГМ может не требовать бросок для дружественных.<br>
+<strong>Эффект:</strong> Quick Contest. Победитель: +margin of victory × 10% RP.
+Обмен RP: одинаковый размер — 1:1. Разница +1 — ×2, +2 — ×5, +3 — ×10, +4 — ×20, +5 — ×50, +6 — ×100.</p>
+
+<h3>Wait</h3>
+<p><strong>Стоимость:</strong> по реакции.<br>
+<strong>Броски:</strong> Administration или Management Skill.<br>
+<strong>Эффект:</strong> Отложить реакцию до конкретного манёвра. Затем действовать первым.
+При нескольких Wait: первым действует самое медленное, но быстрые могут прервать.
+Также: запас ресурсов на случай нарушения.</p>
+
+<h2 id="disruptions">Нарушения (Disruptions)</h2>
+
+<p>Бросок 3d6 в начале хода: на 16+ (15+ при расширении) — нарушение.
+Второе на 4 или 17, третье на 3 или 18.</p>
+
+<table>
+  <tr><th>Бросок</th><th>Название</th><th>Немедленный эффект</th><th>Долгосрочный эффект</th><th>Контрманёвр</th></tr>
+  <tr><td>1,1–2</td><td>Plague!</td><td>−1d/2 Workforce, население −3d%</td><td>−1d/2 случайных RP/ход</td><td>Allocate Resources + лечение</td></tr>
+  <tr><td>1,3–4</td><td>Inclement Weather</td><td>−1 Agriculture, −1 Natural</td><td>—</td><td>—</td></tr>
+  <tr><td>1,5–6</td><td>Sabotage!</td><td>−1d−3 случайных RP</td><td>На 6−: «крот» −1 RP/ход</td><td>Reconnoiter</td></tr>
+  <tr><td>2,1–2</td><td>Trade Embargo</td><td>Реакция −1d шагов</td><td>—</td><td>Bluff/Negotiate</td></tr>
+  <tr><td>2,3–4</td><td>Invasion!</td><td>—</td><td>−1 каждого RP/ход оккупации</td><td>Mass Combat или переговоры</td></tr>
+  <tr><td>2,5–6</td><td>Flood</td><td>IR −1d/2, −1d−3 Agriculture</td><td>IR постоянно снижен</td><td>Allocate Resources + 1d−2 RP</td></tr>
+  <tr><td>3,1–2</td><td>Drought/Famine</td><td>—</td><td>Нужно 3 Agriculture/Natural/ход</td><td>Allocate Resources + 1d−2 RP + 3 Agriculture</td></tr>
+  <tr><td>3,3–4</td><td>Corruption</td><td>Revenue −20%, Loyalty −1</td><td>На 6−: казнокрад −5% Revenue/ход</td><td>Reconnoiter</td></tr>
+  <tr><td>3,5–6</td><td>Political Schism</td><td>−1d к Bluff/Negotiate/Threaten/Trade</td><td>На 6−: новая идеология, ConR −1</td><td>Bluff (пропаганда)</td></tr>
+  <tr><td>4,1–2</td><td>Religious Uprising</td><td>ConR −1d−3</td><td>—</td><td>Bluff со штрафом</td></tr>
+  <tr><td>4,3–4</td><td>Troublesome Flora/Fauna</td><td>−1d−3 Agriculture (мин. 1)</td><td>−1 Agriculture каждые 4 хода</td><td>Allocate Resources + 1 Workforce</td></tr>
+  <tr><td>4,5–6</td><td>Fire</td><td>−1d случайных RP</td><td>−1d−5 RP/ход в течение 1d ходов</td><td>Allocate Resources</td></tr>
+  <tr><td>5,1–2</td><td>Pollution</td><td>−2 RP (выбор ГМ)</td><td>Штрафы к населению, IR, RP</td><td>Allocate Resources (1–4 Workforce)</td></tr>
+  <tr><td>5,3–4</td><td>Shortage</td><td>−1d−1 одного ресурса</td><td>1d−3 ходов (краткоср.) или −1/ход</td><td>Allocate Resources (Workforce = убыток)</td></tr>
+  <tr><td>5,5–6</td><td>Infrastructure Breakdown</td><td>IR −1</td><td>На 6−: постоянно; иначе 1d−2 ходов</td><td>Marshal Manpower (постоянно)</td></tr>
+  <tr><td>6,1–2</td><td>Civil Unrest!</td><td>Loyalty −1</td><td>На 6−: постоянно; иначе 1d−2 ходов</td><td>Bluff/Negotiate (постоянно)</td></tr>
+  <tr><td>6,3–4</td><td>Demagogue</td><td>Inefficient на 1d ходов</td><td>Loyalty и ConR −1d−3</td><td>Bluff</td></tr>
+  <tr><td>6,5–6</td><td>Combined Event</td><td>Переброс дважды, сложение</td><td>—</td><td>Каждое отдельно</td></tr>
+</table>
+
+<h2 id="windfalls">Удачи (Windfalls)</h2>
+
+<p>Бросок 3d6: на 5− — удача. Второе на 4, третье на 3.</p>
+
+<table>
+  <tr><th>Бросок</th><th>Название</th><th>Немедленный эффект</th><th>Долгосрочный эффект</th><th>Поддержание</th></tr>
+  <tr><td>1,1–2</td><td>New Trade Connection</td><td>+1d/2 Agriculture/Luxury/Natural</td><td>На 6−: +1 RP/ход 1d ходов</td><td>Allocate Resources (без RP)</td></tr>
+  <tr><td>1,3–4</td><td>Blackmail Acquired</td><td>+2 или +1d−2 к Bluff/Negotiate/Threaten</td><td>Бонус уменьшается на 1 за использование</td><td>Reconnoiter + Quick Contest</td></tr>
+  <tr><td>1,5–6</td><td>Third-Party Charity</td><td>Переброс: что именно</td><td>Как второй бросок</td><td>Как второй бросок</td></tr>
+  <tr><td>2,1–2</td><td>Reform</td><td>+2 к манёврам против своего народа 1d−1 ходов</td><td>+1 ConR/OR/Loyalty</td><td>Bluff/Negotiate/Threaten</td></tr>
+  <tr><td>2,3–4</td><td>Enhanced Currency</td><td>+1 Revenue за ход</td><td>На 6−: +50% Revenue; на 16+: конец</td><td>1d/2 Plan-манёвров</td></tr>
+  <tr><td>2,5–6</td><td>Military Training</td><td>+50% Revenue в Military Resources</td><td>Как выше</td><td>Allocate Resources + 1 Workforce</td></tr>
+  <tr><td>3,1–2</td><td>Technological Breakthrough</td><td>+1d/2 (мин. 1) одного ресурса</td><td>Возможен рост TL</td><td>8 Plan (4 Gadgeteer, 1 Quick)</td></tr>
+  <tr><td>3,3–4</td><td>Investor/Patron</td><td>+1d RP</td><td>На 6−: +1d−3 RP и снова бросок</td><td>—</td></tr>
+  <tr><td>3,5–6</td><td>Resource Discovery</td><td>+1d RP</td><td>+1 RP</td><td>Allocate Resources + 1 Workforce</td></tr>
+  <tr><td>4,1–2</td><td>Bumper Crop</td><td>+1d Agriculture</td><td>+1 Agriculture</td><td>Allocate Resources + 1 Workforce</td></tr>
+  <tr><td>4,3–4</td><td>Mild Weather</td><td>+1 Agriculture</td><td>Отменяет Drought/Flood/Inclement</td><td>—</td></tr>
+  <tr><td>4,5–6</td><td>Loyalty Boost</td><td>Loyalty +1 на 1d ходов</td><td>Loyalty +1 постоянно</td><td>Bluff/Negotiate (без RP)</td></tr>
+  <tr><td>5,1–2</td><td>Social Resonance Increase</td><td>Social Resonance +1</td><td>—</td><td>—</td></tr>
+  <tr><td>5,3–4</td><td>Pilgrimage</td><td>+10% Revenue</td><td>На 6−: святыня; +10% Revenue/ход</td><td>Allocate Resources</td></tr>
+  <tr><td>5,5–6</td><td>Immigration</td><td>+1 Revenue за ход</td><td>Население +1d0.5%</td><td>Оплатить рост Realm Value + 1d−2 Marshal</td></tr>
+  <tr><td>6,1–2</td><td>Educational Reform</td><td>ER +1 на 1d ходов</td><td>ER +1 постоянно</td><td>Allocate Resources (2 Workforce) или Negotiate</td></tr>
+  <tr><td>6,3–4</td><td>Crime Reduction</td><td>Loyalty +1 на 1d ходов или +1 Workforce</td><td>Loyalty +1 или +1d−2 Workforce</td><td>Allocate Resources или Marshal</td></tr>
+  <tr><td>6,5–6</td><td>Combined Event</td><td>Переброс дважды, сложение</td><td>—</td><td>Каждое отдельно</td></tr>
+</table>
+
+<h2 id="expansion">Расширение и рост</h2>
+<p>
+Определите новую территорию, пересчитайте Realm Value, оплатите разницу.
+Период расширения: 2–17 ходов (3d−1). Нарушения на 15+.
+После завершения — бросок навыка: 0–2 = обычная цена; 3+ = 80%; крит. успех = 50%;
+провал = 110%; крит. провал = 125%.
+</p>
+<p>
+Завоевание — через GURPS Mass Combat. Завоёванная территория: Loyalty = 1d/2,
+ConR = 0, RP = 0. Можно сменить тип правления.
+</p>
+
+<h2 id="revolution">Революция и распад</h2>
+<p>
+Проверка при гражданских беспорядках, голоде, провале Bluff и т.п.:
+бросок против Citizen Loyalty + половина ConR (округление вниз).
+Успех — государство живёт; крит. успех — +1 к следующей проверке.
+Провал — ConR −1 на 1d ходов. Крит. провал — революция.
+</p>
+<p>
+Если ConR > 0, проверка каждый ход, пока проблема не решена.
+При ConR 0 — бунт (Mass Combat).
+</p>
+<p>
+После успешной революции — проверка распада: Management Skill каждый ход.
+Успех — государство держится; крит. успех — стабилизация; крит. провал — распад.
+</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- БЫСТРЫЕ ТАБЛИЦЫ -->
+<!-- ============================================================ -->
+<div class="page">
+<h1 id="quick">Быстрые таблицы и формулы</h1>
+
+<h3>Формулы</h3>
+<div class="formula">
+Базовая Realm Value = (месячная зарплата) × Население × 0.6<br>
+Realm Value = Базовая × (1 + сумма % модификаторов)<br>
+MR = (месячная зарплата) × Население × MBF<br>
+Revenue = (месячная зарплата) × Население × RF × 0.6<br>
+Starting Revenue = 1% от Realm Value<br>
+Стоимость 1 RP при создании = 0.5% базовой Realm Value<br>
+Покупка RP в игре = Realm Value × 0.001 за пункт
+</div>
+
+<h3>MBF и RF по CR</h3>
+<table>
+  <tr><th>CR</th><th>MBF</th><th>RF</th></tr>
+  <tr><td>0</td><td>—</td><td>0.5% (опц.)</td></tr>
+  <tr><td>1</td><td>0.5%</td><td>2%</td></tr>
+  <tr><td>2</td><td>1%</td><td>5%</td></tr>
+  <tr><td>3</td><td>2%</td><td>10%</td></tr>
+  <tr><td>4</td><td>5%</td><td>20%</td></tr>
+  <tr><td>5</td><td>10%</td><td>30%</td></tr>
+  <tr><td>6</td><td>20%</td><td>50%</td></tr>
+</table>
+
+<h3>Carrying Capacity по TL</h3>
+<table>
+  <tr><th>TL</th><th>Плотность</th><th>TL</th><th>Плотность</th></tr>
+  <tr><td>0</td><td>12*</td><td>7</td><td>200</td></tr>
+  <tr><td>1</td><td>20</td><td>8</td><td>280</td></tr>
+  <tr><td>2</td><td>28</td><td>9</td><td>400</td></tr>
+  <tr><td>3</td><td>40</td><td>10</td><td>600</td></tr>
+  <tr><td>4</td><td>60</td><td>11</td><td>800</td></tr>
+  <tr><td>5</td><td>80</td><td>12</td><td>1 200</td></tr>
+  <tr><td>6</td><td>120</td><td></td><td></td></tr>
+</table>
+<p>* Охотники-собиратели: ÷10.</p>
+
+<h3>Штрафы за несколько манёвров</h3>
+<table>
+  <tr><th>Ситуация</th><th>Стоимость</th><th>Штраф</th></tr>
+  <tr><td>Без Facile</td><td>2 Workforce за манёвр (мин. 4)</td><td>−6 ко всем</td></tr>
+  <tr><td>С Facile</td><td>1 Workforce за манёвр</td><td>−3 ко всем</td></tr>
+  <tr><td>Maneuver Mastery</td><td>Игнор для выбранного</td><td>—</td></tr>
+</table>
+
+<h3>Реакция государств (Starting Reaction)</h3>
+<table>
+  <tr><th>Результат</th><th>Реакция</th><th>Поведение</th></tr>
+  <tr><td>0 и менее</td><td>Disastrous</td><td>Война или подготовка к ней</td></tr>
+  <tr><td>1–3</td><td>Very Bad</td><td>Саботаж, подрыв, всё кроме войны</td></tr>
+  <tr><td>4–6</td><td>Bad</td><td>Пассивная оппозиция</td></tr>
+  <tr><td>7–9</td><td>Poor</td><td>Пассивно против при выгоде</td></tr>
+  <tr><td>10–12</td><td>Neutral</td><td>Сотрудничество при выгоде</td></tr>
+  <tr><td>13–15</td><td>Good</td><td>Помощь, но без перенапряжения</td></tr>
+  <tr><td>16–18</td><td>Very Good</td><td>Союзник; помощь даже в войне</td></tr>
+  <tr><td>19+</td><td>Excellent</td><td>Фанатичный союзник</td></tr>
+</table>
+
+<h3>Пример: Зартус (Necro-Kingdom)</h3>
+<table>
+  <tr><th>Параметр</th><th>Значение</th></tr>
+  <tr><td>Площадь</td><td>160 000 кв. миль</td></tr>
+  <tr><td>Realm Size Value</td><td>+16</td></tr>
+  <tr><td>Resource Points</td><td>25 (9 Agriculture, 3 Luxury, 3 Natural, 10+1d Workforce)</td></tr>
+  <tr><td>TL</td><td>3</td></tr>
+  <tr><td>Население</td><td>192 000</td></tr>
+  <tr><td>Citizen Loyalty</td><td>Neutral (11; +1)</td></tr>
+  <tr><td>IR / CR / ConR / OR</td><td>2 / 3 / 2 / 1</td></tr>
+  <tr><td>Правление</td><td>Feudal Aristocracy (thaumatocracy)</td></tr>
+  <tr><td>Экономика</td><td>Traditional</td></tr>
+  <tr><td>ER</td><td>2</td></tr>
+  <tr><td>Management Skill</td><td>15</td></tr>
+  <tr><td>Habitability</td><td>Poor (9; −1)</td></tr>
+  <tr><td>RTM</td><td>+4</td></tr>
+  <tr><td>Realm Value</td><td>$155 635 200</td></tr>
+  <tr><td>Military Resources</td><td>$2 688 000/ход</td></tr>
+  <tr><td>Revenue</td><td>$8 064 000/ход</td></tr>
+  <tr><td>Starting Revenue</td><td>$1 556 352</td></tr>
+  <tr><td>Patron / Enemy</td><td>20 / −30 очков</td></tr>
+</table>
+
+<h3>Пример: Новая Венецианская Республика</h3>
+<table>
+  <tr><th>Параметр</th><th>Значение</th></tr>
+  <tr><td>Площадь</td><td>16 000 кв. миль</td></tr>
+  <tr><td>Realm Size Value</td><td>+13</td></tr>
+  <tr><td>Resource Points</td><td>25 (3 Agriculture, 7 Luxury, 10 Natural, 5 Workforce)</td></tr>
+  <tr><td>TL</td><td>4</td></tr>
+  <tr><td>Население</td><td>250 000</td></tr>
+  <tr><td>Citizen Loyalty</td><td>Poor (9; −1)</td></tr>
+  <tr><td>IR / CR / ConR / OR</td><td>2 / 1 / 2 / 2</td></tr>
+  <tr><td>Правление</td><td>Representative Democracy-Clan/Tribal</td></tr>
+  <tr><td>Экономика</td><td>Subsistence Capitalism</td></tr>
+  <tr><td>ER</td><td>3</td></tr>
+  <tr><td>Management Skill</td><td>14</td></tr>
+  <tr><td>Habitability</td><td>Bad (6; −1)</td></tr>
+  <tr><td>RTM</td><td>+2</td></tr>
+  <tr><td>Realm Value</td><td>$90 000 000</td></tr>
+  <tr><td>Military Resources</td><td>$1 000 000/ход</td></tr>
+  <tr><td>Revenue</td><td>$2 400 000/ход</td></tr>
+  <tr><td>Starting Revenue</td><td>$900 000</td></tr>
+</table>
+
+<h3>Пример: Гегемония</h3>
+<table>
+  <tr><th>Параметр</th><th>Значение</th></tr>
+  <tr><td>Площадь</td><td>4 500 млн кв. миль (13 систем)</td></tr>
+  <tr><td>Realm Size Value</td><td>+27 (interplanetary state)</td></tr>
+  <tr><td>Resource Points</td><td>165 (30 Agriculture, 30 Luxury, 70 Natural, 35 Workforce)</td></tr>
+  <tr><td>TL</td><td>10</td></tr>
+  <tr><td>Население</td><td>45 000 000 000</td></tr>
+  <tr><td>Citizen Loyalty</td><td>Excellent (19; +8)</td></tr>
+  <tr><td>IR / CR / ConR / OR</td><td>5 / 6 / 5 / 2</td></tr>
+  <tr><td>Правление</td><td>Cybercracy</td></tr>
+  <tr><td>Экономика</td><td>Post-Scarcity</td></tr>
+  <tr><td>ER</td><td>6</td></tr>
+  <tr><td>Management Skill</td><td>12 (Completely Reliable)</td></tr>
+  <tr><td>Habitability</td><td>Good (13; +1)</td></tr>
+  <tr><td>RTM</td><td>0</td></tr>
+  <tr><td>Realm Value</td><td>$545 832 000 000 000</td></tr>
+  <tr><td>Military Resources</td><td>$50 400 000 000 000/ход</td></tr>
+  <tr><td>Revenue</td><td>$75 600 000 000 000/ход</td></tr>
+  <tr><td>Starting Revenue</td><td>$5 458 320 000 000</td></tr>
+</table>
+
+</div>
+
+</body>
+</html>
